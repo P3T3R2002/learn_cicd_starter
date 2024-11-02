@@ -23,7 +23,7 @@ jobs:
 
 jobs:
   tests:
-    name: Style
+    name: Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -35,5 +35,5 @@ jobs:
         with:
           go-version: '1.23.0'
 
-      - name: Force Failure
+      - name: Style
         run: test -z $(go fmt ./...)
