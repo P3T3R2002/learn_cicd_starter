@@ -13,15 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Go
-        uses: actions/setup-Go@v2
-        
       - name: Build
         run: scripts/buildprod.sh
-        jobs:
 
-    steps:
-      - id: 'auth'
+      - name: 'auth'
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
@@ -32,5 +27,5 @@ jobs:
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
 
-      - name: build docker
+      - name: Deploy code
         run: gcloud builds submit --tag europe-central2-docker.pkg.dev/future-graph-442313-q0/notely-ar-repo/notely:latest .
