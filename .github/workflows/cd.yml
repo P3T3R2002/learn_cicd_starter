@@ -32,3 +32,6 @@ jobs:
 
       - name: Deploy code
         run: gcloud builds submit --tag europe-central2-docker.pkg.dev/future-graph-442313-q0/notely-ar-repo/notely:latest .
+        
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image europe-central2-docker.pkg.dev/future-graph-442313-q0/notely-ar-repo/notely:latest . --region europe-central2 --allow-unauthenticated --project future-graph-442313-q0 --max-instances=4
